@@ -18,7 +18,7 @@ init <- function() {
 }
 
 evolve <- function(max_generations) {
-    # approach: genetic algoritm, stop if not improving anymore [TP2]
+    # approach: genetic algoritm, stop if not improving anymore
     gen <- 0
     while (gen < max_generations) {
         gen <- gen + 1
@@ -103,7 +103,7 @@ target_function <- function(route) {
     return(1 / total_duration) # higher values should indicate better solutions
 }
 
-# ----- TP1 -----
+# ----- outer optimization: best pickup sequence -----
 
 sequence_slot_pairs <- combn(1:n, 2) # all permutations of length 2
 sequence_slot_pairs_count <- ncol(sequence_slot_pairs)
@@ -186,7 +186,7 @@ mutate <- function(sequence) {
     return(mutated_sequence)
 }
 
-# ----- TP2 -----
+# ----- inner optimization: best route for given pickup sequence -----
 
 find_optimal_route <- function(sequence) {
     # approach: first calculate greedy solution, then optimize it locally
